@@ -15,7 +15,7 @@ You can either modify the project following the steps below or directly install 
 4. Ensure that both your Android device and PC are connected to the same local network (e.g., the same WiFi) as socket programming is used.
 5. Install Python on your PC.
 6. Install Flask: pip install flask.
-7. Run my_flask.py located in the Backend folder: python my_flask.py.
+7. Download the "Backend" folder and run app.py located in the Backend folder: python app.py.
 8. Open the Flutter app on your Android device and enter your PC's IP address (Go to command prompt and use ipconfig to find your IP address).
 
 ## Notes
