@@ -21,10 +21,12 @@ class Home extends StatefulWidget {
 
 class MyApp extends State<Home> with TickerProviderStateMixin {
   late AnimationController animationController;
+  static bool has_uploaded = false;
   static bool showIndicator = false;
   static bool myPermissionstatus = false;
   static bool download = false;
   static bool process = false;
+  static String add_change_video = "Upload Video";
   //Profile picture
   static PlatformFile? myDp;
 
@@ -142,6 +144,7 @@ class MyApp extends State<Home> with TickerProviderStateMixin {
           .showSnackBar(SnackBar(content: Text("Video uploading....")));
       if (backup != null && backup!.path != null) {
         setState(() {
+          process = false;
           showIndicator = true;
           animationController.value = 0.0;
           animationController.forward();
@@ -296,7 +299,7 @@ class MyApp extends State<Home> with TickerProviderStateMixin {
                                   children: <Widget>[
                                     SimpleDialogOption(
                                       onPressed: null,
-                                      child: Center(child: Text('Click On Add Video'),),
+                                      child: Center(child: Text('Click On Upload Video'),),
                                     ),
                                     SimpleDialogOption(
                                       onPressed: null,
@@ -326,7 +329,7 @@ class MyApp extends State<Home> with TickerProviderStateMixin {
                                 child: AnimatedTextKit(
                               animatedTexts: [
                                 TyperAnimatedText(
-                                  'Click On Add Video',
+                                  'Click On Upload Video',
                                   textStyle: TextStyle(
                                     color: textColor,
                                     fontSize:
@@ -382,31 +385,32 @@ class MyApp extends State<Home> with TickerProviderStateMixin {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Flexible(
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: buttonColor),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => VideoPlayerScreen(
-                                videoPath: backup!.path,
+                    if(has_uploaded)
+                      Flexible(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: buttonColor),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VideoPlayerScreen(
+                                  videoPath: backup!.path,
+                                ),
                               ),
+                            );
+                          },
+                          child: Text(
+                            vName,
+                            style: TextStyle(
+                              color: textColor,
+                              fontSize: screenSize.width < screenSize.height
+                                  ? screenSize.width * 0.025
+                                  : screenSize.height * 0.025,
                             ),
-                          );
-                        },
-                        child: Text(
-                          vName,
-                          style: TextStyle(
-                            color: textColor,
-                            fontSize: screenSize.width < screenSize.height
-                                ? screenSize.width * 0.025
-                                : screenSize.height * 0.025,
                           ),
                         ),
                       ),
-                    ),
                     Flexible(
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
@@ -414,13 +418,15 @@ class MyApp extends State<Home> with TickerProviderStateMixin {
                         onPressed: () {
                           if (myPermissionstatus) {
                             fetchData();
+                            add_change_video = "Change Video";
+                            has_uploaded = true;
                           } else {
                             requestPermission(Permission.videos, context);
                           }
                         }, // No action is performed when pressed
                         icon: Icon(Icons.add),
                         label: Text(
-                          'Add Video',
+                          add_change_video,
                           style: TextStyle(
                             color: textColor,
                             fontSize: screenSize.width < screenSize.height
