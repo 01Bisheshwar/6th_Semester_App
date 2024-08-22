@@ -1,9 +1,22 @@
-Steps...
-1. Replace the android folder, lib folder and pubspec.ymal file with your flutter project's corresponding folders and file
-2. Build the apk of the flutter project and install in an Android device
-3. Connect the Android device and your PC to the same local network(same WiFi)
-4. Install flask in your system: pip install flask
-5. Run the my_flask.py present in the Backend folder: python my_flask.py
-6. Open the flutter app in your Android Device and give the IPaddress of your PC(Use ipconfig to find the IPaddress of the PC)
-Now you can use the App
-As the AI model takes time to run, wait patiently
+## Project Aim
+Build an Android app that detects and classifies multiple objects in a video using AI.
+
+## Technologies Used
+1. Flutter: To develop the Android app.
+2. Flask: To handle API calls.
+3. YOLO Model: For object detection and classification in videos.
+
+## How to Use This Project
+You can either modify the project following the steps below or directly install the APK and start from Step 4.
+
+1. Replace the android folder, lib folder, and pubspec.yaml file in your Flutter project with those provided in this repository.
+2. Make any desired changes to the project.
+3. Build the APK and install it on an Android device.
+4. Ensure that both your Android device and PC are connected to the same local network (e.g., the same WiFi) as socket programming is used.
+5. Install Python on your PC.
+6. Install Flask: pip install flask.
+7. Run my_flask.py located in the Backend folder: python my_flask.py.
+8. Open the Flutter app on your Android device and enter your PC's IP address (Go to command prompt and use ipconfig to find your IP address).
+
+## Notes
+The app may take some time to process videos as the AI model runs, so please be patient.
