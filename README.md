@@ -16,7 +16,9 @@ You can either modify the project following the steps below or directly install 
 5. Install Python on your PC.
 6. Install Flask: pip install flask.
 7. Download the "Backend" folder and run app.py located in the Backend folder: python app.py.
-8. Open the Flutter app on your Android device and enter your PC's IP address (Go to command prompt and use ipconfig to find your IP address).
+8. Open the app on your Android device and enter your PC's IP address (Go to command prompt and use ipconfig to find your IP address).
+9. Upload a video and click on process button
+10. Wait for the result. Finally click on download button.
 
 ## Notes
 The app may take some time to process videos as the AI model runs, so please be patient.
